@@ -3,24 +3,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
 
   // 1. Apply saved or default theme
-  const savedTheme = localStorage.getItem("theme");
+  const detectSystemTheme = () =>
+      window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
   const applyTheme = (theme) => {
       root.classList.remove("light-mode", "dark-mode");
-      root.classList.add(`${theme}-mode`);
+
+      if (theme === "dark") {
+        root.classList.add("dark-mode");
+      }
+      if (theme === "light") {
+        root.classList.add("light-mode");
+      }
+      
       localStorage.setItem("theme", theme);
-    };
+  };
 
-  const detectSystemPreference = () =>
-      window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  const savedTheme = localStorage.getItem("theme");
 
-  applyTheme(savedTheme || detectSystemPreference());
+  // Only apply saved theme or fall back to system preference
+  if (savedTheme === "light" || savedTheme === "dark") {
+    applyTheme(savedTheme);
+  } else {
+    const systemTheme = detectSystemTheme();
+    root.classList.add(`${systemTheme}-mode`);
+  }
+
+  // Prevent duplicate binding
+  toggleBtn?.removeEventListener("click", toggleBtn._handler);
+
+  const clickHandler = () => {
+    const isDark = root.classList.contains("dark-mode");
+    applyTheme(isDark ? "light" : "dark");
+  };
 
   // 2. Toggle theme on button click
-
-  themeToggle.addEventListener("click", () => {
-    const currentTheme = root.classList.contains("dark-mode") ? "dark" : "light";
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    applyTheme(newTheme);
-    });
+  toggleBtn._handler = clickHandler;
+  toggleBtn?.addEventListener("click", clickHandler);
+  
 });
