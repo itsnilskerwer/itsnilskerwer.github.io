@@ -12,19 +12,7 @@ body {
 }
  h1, h2, h3 {
 	 line-height: 1.2;
-}/* 
- @media (prefers-color-scheme: dark) {
-	 body {
-		 color: #c9d1d9;
-		 background: #0d1117;
-	}
-	 a:link {
-		 color: #58a6ff;
-	}
-	 a:visited {
-		 color: #8e96f0;
-	}
-} */
+}
 button {
   background-color: light-dark(#c9d1d9, #444);
   color: light-dark(#444, #c9d1d9);
@@ -46,4 +34,13 @@ a:visited {
 /* force dark theme when this class is present */
 .dark-mode {
   color-scheme: only dark;
+}
+
+/* Icon styling */
+.sun { fill: var(--sun-color, black); }
+.moon { fill: var(--moon-color, transparent); }
+
+.dark-mode {
+  --sun-color: transparent;
+  --moon-color: white;
 }
