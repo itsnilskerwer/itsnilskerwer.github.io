@@ -25,9 +25,8 @@ body {
 	}
 } */
 button {
-  background-color: light-dark(white, black);
-  color: light-dark(black, white);
-  border: solid 1px light-dark(black, white);
+  background-color: light-dark(white, #444);
+  color: light-dark(#444, white);
   padding: 8px;
   border-radius: 4px;
 }
