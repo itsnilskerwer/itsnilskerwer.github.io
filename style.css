@@ -10,8 +10,7 @@ body {
 	 color: light-dark(#444, #fff);
      background-color: light-dark(#fff, #0d1117);   /* 
      try dark #1d1923 or
-        background-color: light-dark(#fff, #0d1117);
-        color: light-dark(#222, #eee);
+     color: light-dark(#222, #eee);
     */
 }
  h1, h2, h3 {
