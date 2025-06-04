@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Prevent duplicate binding
-  toggleBtn?.removeEventListener("click", toggleBtn._handler);
+  themeToggle?.removeEventListener("click", themeToggle._handler);
 
   const clickHandler = () => {
     const isDark = root.classList.contains("dark-mode");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // 2. Toggle theme on button click
-  toggleBtn._handler = clickHandler;
-  toggleBtn?.addEventListener("click", clickHandler);
-  
+  themeToggle._handler = clickHandler;
+  themeToggle?.addEventListener("click", clickHandler);
+
 });
