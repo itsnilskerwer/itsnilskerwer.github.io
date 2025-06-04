@@ -3,7 +3,12 @@
 ## Features
 
 - static website
-- pure HTML and CSS
+- pure HTML, CSS, JS
+
+### Theme toggle
+
+CSS color function light-dark() makes media query obsolete. 
+
 
 ## Benchmarks
 

@@ -1,3 +1,7 @@
+:root {
+  /* let the browser know this has light and dark mode */
+  color-scheme: light dark;
+}
 body {
 	 max-width: 650px;
 	 margin: 40px auto;
@@ -7,7 +11,7 @@ body {
 }
  h1, h2, h3 {
 	 line-height: 1.;
-}
+}/* 
  @media (prefers-color-scheme: dark) {
 	 body {
 		 color: #c9d1d9;
@@ -19,4 +23,21 @@ body {
 	 a:visited {
 		 color: #8e96f0;
 	}
+} */
+button {
+  background-color: light-dark(white, black);
+  color: light-dark(black, white);
+  border: solid 1px light-dark(black, white);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* force light theme when this class is present */
+.light-mode {
+  color-scheme: only light;
+}
+
+/* force dark theme when this class is present */
+.dark-mode {
+  color-scheme: only dark;
 }
