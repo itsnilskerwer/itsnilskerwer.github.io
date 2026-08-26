@@ -1,50 +1,182 @@
 :root {
-  /* let the browser know this has light and dark mode */
   color-scheme: light dark;
+
+  --background: light-dark(#f6f5f0, #111217);
+  --text: light-dark(#1b1b19, #f1f0ea);
+  --muted: light-dark(#66645f, #aaa8a0);
+  --accent: light-dark(#3f3cbb, #a6a5ff);
+  --divider: light-dark(#dcdad2, #303138);
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 4rem;
+}
+
 body {
-	 max-width: 650px;
-	 margin: 40px auto;
-	 padding: 0 10px;
-	 font: 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	 color: light-dark(#444, #fff);
-     background-color: light-dark(#fff, #0d1117);   /* 
-     try dark #1d1923 or
-     color: light-dark(#222, #eee);
-    */
+  margin: 0;
+  color: var(--text);
+  background: var(--background);
+  font: 18px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
 }
- h1, h2, h3 {
-	 line-height: 1.2;
+
+.site-header {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 6rem;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  background: var(--background);
+  border-bottom: 1px solid var(--divider);
 }
+
+.site-header > a {
+  margin-right: auto;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover,
+.source,
+.label {
+  color: var(--accent);
+}
+
 button {
-  background-color: light-dark(#c9d1d9, #444);
-  color: light-dark(#444, #c9d1d9);
-  padding: 8px;
-  border-radius: 4px;
+  padding: 6px;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
-a:link {
-    color: light-dark(#58a6ff, #bf753d);
+
+section {
+  width: calc(100% - 40px);
+  max-width: 720px;
+
+  margin: auto;
+  padding: clamp(64px, 14vh, 140px) 0;
+
+  display: grid;
+  align-content: center;
+  
+  scroll-snap-align: start;
 }
-a:visited {
-	color: light-dark(#434669, #785438 );
+
+h1,
+h2 {
+  max-width: 20ch;
+  margin: 0 0 24px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+h1 {
+  font-size: clamp(48px, 7vw, 72px);
+}
+
+h2 {
+  font-size: clamp(32px, 5vw, 48px);
+}
+
+p {
+  max-width: 60ch;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 30px;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--divider);
+}
+
+.result {
+  margin: 24px 0 0;
+  color: var(--text);
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.section-image {
+  margin: auto;
+}
+
+.section-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--divider);
+}
+
+.section-image figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .sun {
-  fill: var(--sun-color, black);
+  fill: var(--sun-color, currentColor);
 }
+
 .moon {
   fill: var(--moon-color, transparent);
 }
 
-/* Override themes */
 .dark-mode {
   color-scheme: only dark;
   --sun-color: transparent;
-  --moon-color: white;
+  --moon-color: currentColor;
 }
 
 .light-mode {
   color-scheme: only light;
-  --sun-color: black;
+  --sun-color: currentColor;
   --moon-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding-inline: 20px;
+  }
+
+  nav a:not(.source) {
+    display: none;
+  }
+}
+
+@media (max-height: 700px) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  section {
+    min-height: auto;
+  }
 }
