@@ -16,6 +16,7 @@
 html {
   scroll-snap-type: y proximity;
   scroll-padding-top: var(--header-height);
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -74,7 +75,7 @@ button {
 section {
   width: calc(100% - 40px);
   max-width: 720px;
-
+  min-height: calc(100svh - var(--header-height));
   margin: auto;
   padding: clamp(64px, 14vh, 140px) 0;
 
@@ -82,6 +83,7 @@ section {
   align-content: center;
   
   scroll-snap-align: start;
+  scroll-snap-stop: normal;
 }
 
 h1,
