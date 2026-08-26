@@ -75,7 +75,6 @@ button {
 section {
   width: calc(100% - 40px);
   max-width: 720px;
-  min-height: calc(100svh - var(--header-height));
   margin: auto;
   padding: clamp(64px, 14vh, 140px) 0;
 
@@ -180,6 +179,6 @@ p {
   }
 
   section {
-    scroll-snap-stop: normal;
+    scroll-snap-stop: always; /* always */
   }
 }
