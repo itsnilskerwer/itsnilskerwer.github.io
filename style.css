@@ -176,10 +176,10 @@ p {
 
 @media (max-height: 700px) {
   html {
-    scroll-snap-type: none;
+    scroll-snap-type: y mandatory;
   }
 
   section {
-    min-height: auto;
+    scroll-snap-stop: normal;
   }
 }
